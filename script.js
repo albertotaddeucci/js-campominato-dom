@@ -40,7 +40,8 @@ buttonPlay.addEventListener("click",function(){
 
 //funzione crea griglia
 function createGrid(cellNum,numberCol){    
-    // const randomNumbersArray = getRandomNumbersArray(cellNum)  
+    const randomNumbersArray = getRandomNumbersArray(cellNum)  //creazione 16 numeri casuali
+    console.log(randomNumbersArray)
     
     for(let i = 0; i < cellNum; i++){        
 
@@ -49,17 +50,39 @@ function createGrid(cellNum,numberCol){
         newElement.style.width = `calc(100%/${numberCol})`;
         
         gridElement.append(newElement);
+
+        
+        
         
         // al click aggiungo classe active e numero in console
         newElement.addEventListener("click", function() {
             
+            let numberClicked = i+1
+            console.log(numberClicked);    
+            
             this.classList.toggle("active");
-            console.log(i+1);    
+            // console.log(randomNumbersArray[i])
+
+            const isbomb = findNumberArray(randomNumbersArray,numberClicked)
+
+            if (isbomb){
+                newElement.style.backgroundColor = "red"
+            }
+            
             
         });
-    
+        
     }            
     
+}
+
+
+
+
+
+// funzione per trovare bomba
+function findNumberArray(array, target) {
+    return array.includes(target); // Returns true if the target is found, false otherwise
 }
 
 
@@ -68,7 +91,7 @@ function getRandomNumbersArray(maxNumArray) {
 
     const numbersArray = [];
 
-    while (numbersArray.length < maxNumArray) {
+    while (numbersArray.length < 16) {
 
         // Inserisco il numero solo se non è già presente
         const newNumber = generateRandomNumber(maxNumArray);
