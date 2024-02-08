@@ -40,3 +40,8 @@ body {
 .disabled{
     pointer-events: none;
 }
+
+.bomb{
+    background-color: red;
+}
+
