@@ -17,7 +17,13 @@ body {
 
 
 .square{     
+    display: flex;
+    justify-content: center;
+    align-items: center;
     aspect-ratio: 1;
+
+    font-size: 1.3em;
+    font-weight: bold;
     background-color: #9DBC98;
 }
 

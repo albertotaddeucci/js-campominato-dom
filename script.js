@@ -14,6 +14,9 @@ let isBomb;
 buttonPlay.addEventListener("click",function(){
     let selectDiff = document.getElementById("select").value;
     gridElement.innerText = ""
+    document.getElementById("points").innerText = "0"
+    gridElement.classList.remove("disabled");
+
         
     
     if (selectDiff == 1){
@@ -40,9 +43,6 @@ buttonPlay.addEventListener("click",function(){
 
 
 
-
-
-
 /* -------------------------------- funzioni -------------------------------- */
 
 
@@ -51,7 +51,7 @@ function createGrid(cellNum,numberCol){
     const randomNumbersArray = getRandomNumbersArray(cellNum)  //creazione 16 numeri casuali
     console.log(randomNumbersArray)
 
-    const array = []
+    const arrayClicked = []
     
     for(let i = 0; i < cellNum; i++){        
         
@@ -60,39 +60,34 @@ function createGrid(cellNum,numberCol){
         newElement.style.width = `calc(100%/${numberCol})`;
         
         gridElement.append(newElement);
-        
-        
+        newElement.innerText = `${i+1}`           
         
         let numberClicked;
         
         // al click aggiungo classe active e numero in console
         newElement.addEventListener("click", function(){
             
-            array.push("click")
-            console.log(array)
-            console.log("lungh.",array.length)
-
-            numberClicked = i+1
-            
-            console.log(numberClicked);    
-            
+            arrayClicked.push("click");
+            numberClicked = i+1; 
             this.classList.add("active");
-            // console.log(randomNumbersArray[i])
+            document.getElementById("points").innerText = `${arrayClicked.length}`
                     
-            isBomb = Boolean(findNumberArray(randomNumbersArray,numberClicked))
+            isBomb = findNumberArray(randomNumbersArray,numberClicked)
 
                       
             if (isBomb){
                 newElement.style.backgroundColor = "red"  
                 console.log("primo",isBomb);
                 gridElement.classList.add("disabled");
-                endGame.innerHTML = "Hai perso!" + `Hai fatto ${array.length - 1} click prima di colpire una bomba!`
+                endGame.innerHTML = `Hai perso! Hai fatto ${arrayClicked.length - 1} click prima di colpire una bomba!`
                 for (j=0; j<randomNumbersArray.length; j++){
                     document.querySelector(`#grid div:nth-of-type(${randomNumbersArray[j]})`).classList.add("bomb")
                 }
+                document.getElementById("points").innerText = `${arrayClicked.length-1}`
+
                 
-            } else if (array.length == (cellNum - 16)){
-                console.log("lungh.",array.length)
+            } else if (arrayClicked.length == (cellNum - 16)){
+                console.log("lungh.",arrayClicked.length)
                 gridElement.classList.add("disabled");
                 endGame.innerHTML = "Hai vinto!"
 
@@ -101,15 +96,7 @@ function createGrid(cellNum,numberCol){
             }
 
         })
-        
-
-        
-
-    
-
-
-        
-        
+                
     }            
 
 
