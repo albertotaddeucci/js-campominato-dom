@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* reset */
+
+body {
+    font-family: sans-serif;
+    background-color: #F9EFDB;
+
+}
+
+.my_container{
+    max-width: 900px;
+}
+
+
+.square{     
+    aspect-ratio: 1;
+    background-color: #9DBC98;
+}
+
+.square.active {
+    background-color: #638889;    
+}
+
+.my_background{
+    background-color: #9DBC98 ;
+}
+
+.my_btn_color{
+    background-color:  #D24545 ;
+}
+
+.btn:hover{
+    background-color:  #972525 ;
+}
