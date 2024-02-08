@@ -36,3 +36,7 @@ body {
 .btn:hover{
     background-color:  #972525 ;
 }
+
+.disabled{
+    pointer-events: none;
+}

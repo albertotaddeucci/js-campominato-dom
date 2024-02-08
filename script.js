@@ -6,6 +6,9 @@ const gridElement = document.getElementById("grid")
 const buttonPlay = document.getElementById("button-play");
 
 let cellNum;
+let isBomb;
+
+
 
 buttonPlay.addEventListener("click",function(){
     let selectDiff = document.getElementById("select").value;
@@ -14,8 +17,9 @@ buttonPlay.addEventListener("click",function(){
     
     if (selectDiff == 1){
         cellNum = 100    
-        createGrid(cellNum,10);
-
+        createGrid(cellNum,10);        
+        
+        
         
     } else if (selectDiff == 2){
         cellNum = 81
@@ -25,7 +29,10 @@ buttonPlay.addEventListener("click",function(){
     } else if (selectDiff == 3){
         cellNum = 49
         createGrid(cellNum,7);
+
+       
     }
+    
     
     
 })
@@ -51,32 +58,44 @@ function createGrid(cellNum,numberCol){
         
         gridElement.append(newElement);
 
+
         
-        
+        let numberClicked;
         
         // al click aggiungo classe active e numero in console
-        newElement.addEventListener("click", function() {
+        newElement.addEventListener("click", function(e){
+            numberClicked = i+1
             
-            let numberClicked = i+1
             console.log(numberClicked);    
             
-            this.classList.toggle("active");
+            this.classList.add("active");
             // console.log(randomNumbersArray[i])
+                    
+            isBomb = Boolean(findNumberArray(randomNumbersArray,numberClicked))
 
-            const isbomb = findNumberArray(randomNumbersArray,numberClicked)
-
-            if (isbomb){
-                newElement.style.backgroundColor = "red"
+                      
+            if (isBomb){
+                newElement.style.backgroundColor = "red"  
+                console.log("primo",isBomb);
+                gridElement.classList.add("disabled");
+                
+                
             }
-            
-            
-        });
+        })
+        
+
+        
+
+    
+
+
+        
         
     }            
+
+
     
 }
-
-
 
 
 
