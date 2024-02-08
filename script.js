@@ -86,7 +86,8 @@ function createGrid(cellNum,numberCol){
                 newElement.style.backgroundColor = "red"  
                 console.log("primo",isBomb);
                 gridElement.classList.add("disabled");
-                endGame.innerHTML = "Hai perso!"
+                endGame.innerHTML = "Hai perso!" + `Hai fatto ${array.length -1} click prima di colpire una bomba!`
+
                 
             } else if (array.length == (cellNum - 16)){
                 console.log("lungh.",array.length)
