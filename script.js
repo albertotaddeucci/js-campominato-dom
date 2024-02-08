@@ -16,6 +16,7 @@ buttonPlay.addEventListener("click",function(){
     gridElement.innerText = ""
     document.getElementById("points").innerText = "0"
     gridElement.classList.remove("disabled");
+    gridElement.style.display = "flex";
 
         
     

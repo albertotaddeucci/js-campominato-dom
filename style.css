@@ -7,7 +7,23 @@
 
 body {
     font-family: sans-serif;
-    background-color: #F9EFDB;
+    background-color: #9F70FD;
+
+}
+
+h1{
+    font-family: 'Nabla', system-ui;
+    font-size: 100px;
+}
+
+@media screen and (max-width: 768px){
+    h1{
+        font-size: 50px;
+    }
+}
+
+*:not(h1){
+    font-family: 'Space Mono', monospace;
 
 }
 
@@ -15,7 +31,23 @@ body {
     max-width: 900px;
 }
 
+#grid{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
 
+
+.my_card{
+    transform: perspective(1500px) rotateY(15deg);
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    transition: transform 1s ease 0s;
+    
+}
+
+.my_card:hover{
+    transform: perspective(3000px) rotateY(5deg);
+    
+}
 .square{     
     display: flex;
     justify-content: center;
@@ -24,23 +56,26 @@ body {
 
     font-size: 1.3em;
     font-weight: bold;
-    background-color: #9DBC98;
+    background-color: #FDBF60;
+
+    
 }
 
 .square.active {
-    background-color: #638889;    
+    background-color: #FF8911;    
 }
 
 .my_background{
-    background-color: #9DBC98 ;
+    background-color: #7F27FF ;
 }
 
 .my_btn_color{
-    background-color:  #D24545 ;
+    background-color:  #FDBF60 ;
+
 }
 
 .btn:hover{
-    background-color:  #972525 ;
+    background-color:  #FF8911 ;
 }
 
 .disabled{
@@ -49,5 +84,8 @@ body {
 
 .bomb{
     background-color: red;
+    transition: 0.5s;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
 }
 

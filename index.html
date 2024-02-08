@@ -11,6 +11,10 @@
     <!-- ------------------------------ My style ------------------------------- -->
     <link rel="stylesheet" href="style.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nabla&family=Sixtyfour&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -26,25 +30,26 @@
             <div class="col-6">
                 
                 <select class="form-select" id="select" >
-                    <option selected>Seleziona la difficoiltà</option>
-                    <option value="1" id="option1">Difficoltà 1</option>
-                    <option value="2" id="option2">Difficoltà 2</option>
-                    <option value="3" id="option3">Difficoltà 3</option>
+                    <option selected>Seleziona la difficoltà</option>
+                    <option value="1" id="option1">Facile</option>
+                    <option value="2" id="option2">Medio</option>
+                    <option value="3" id="option3">Difficile</option>
                 </select>
                 
             </div>
             <div class="col-2">
-                <button id="button-play" type="button" class="btn btn-primary btn-lg border-0 my_btn_color">Gioca</button>
+                <button id="button-play" type="button" class="btn btn-primary btn-lg border-0 my_btn_color text-black ">Gioca</button>
                 
                 
             </div>
         </div>
-        <div class="row my-4 align-items-center">
+        <div class="row my-4 align-items-center justify-content-around ">
 
-            <div class="col-6" >
-                <div class="card rounded-5" style="width: 18rem;">
-                    <div class="card-body  text-center">
+            <div class="col-4">
+                <div class="card rounded-4 bg-body-tertiary my_card" >
+                    <div class="card-body  text-center ">
                       <h5 class="card-title">Punteggio</h5>
+                      <hr>
                       <p class="card-text fs-1" id="points">0</p>
                       
                     </div>
@@ -56,7 +61,7 @@
             </div>
         </div>
         
-        <div id="grid" class="d-flex flex-wrap position-relative  ">
+        <div id="grid" class="flex-wrap position-relative" style="display: none;">
             
             
         </div>
