@@ -1,6 +1,7 @@
 
 
-const gridElement = document.getElementById("grid")
+const gridElement = document.getElementById("grid");
+const endGame = document.getElementById("result");
 
 //bottone per giocare
 const buttonPlay = document.getElementById("button-play");
@@ -49,21 +50,28 @@ buttonPlay.addEventListener("click",function(){
 function createGrid(cellNum,numberCol){    
     const randomNumbersArray = getRandomNumbersArray(cellNum)  //creazione 16 numeri casuali
     console.log(randomNumbersArray)
+
+    const array = []
     
     for(let i = 0; i < cellNum; i++){        
-
+        
         const newElement = document.createElement("div");
         newElement.classList.add("col-auto", "border-black", "border" ,"square");
         newElement.style.width = `calc(100%/${numberCol})`;
         
         gridElement.append(newElement);
-
-
+        
+        
         
         let numberClicked;
         
         // al click aggiungo classe active e numero in console
-        newElement.addEventListener("click", function(e){
+        newElement.addEventListener("click", function(){
+            
+            array.push("click")
+            console.log(array)
+            console.log("lungh.",array.length)
+
             numberClicked = i+1
             
             console.log(numberClicked);    
@@ -78,9 +86,17 @@ function createGrid(cellNum,numberCol){
                 newElement.style.backgroundColor = "red"  
                 console.log("primo",isBomb);
                 gridElement.classList.add("disabled");
+                endGame.innerHTML = "Hai perso!"
                 
-                
+            } else if (array.length == (cellNum - 16)){
+                console.log("lungh.",array.length)
+                gridElement.classList.add("disabled");
+                endGame.innerHTML = "Hai vinto!"
+
+
+
             }
+
         })
         
 
