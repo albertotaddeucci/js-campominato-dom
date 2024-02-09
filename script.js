@@ -46,13 +46,12 @@ buttonPlay.addEventListener("click",function(){
 
 /* -------------------------------- funzioni -------------------------------- */
 
-
 //funzione crea griglia
 function createGrid(cellNum,numberCol){    
     const randomNumbersArray = getRandomNumbersArray(cellNum)  //creazione 16 numeri casuali
-    console.log(randomNumbersArray)
 
     const arrayClicked = []
+    let numberClicked;
     
     for(let i = 0; i < cellNum; i++){        
         
@@ -61,41 +60,37 @@ function createGrid(cellNum,numberCol){
         newElement.style.width = `calc(100%/${numberCol})`;
         
         gridElement.append(newElement);
-        newElement.innerText = `${i+1}`           
+        newElement.innerText = `${i+1}`;        
         
-        let numberClicked;
         
         // al click aggiungo classe active e numero in console
         newElement.addEventListener("click", function(){
             
-            arrayClicked.push("click");
             numberClicked = i+1; 
+            
+            if(! this.classList.contains("active")){
+                arrayClicked.push(numberClicked);
+                document.getElementById("points").innerText = arrayClicked.length
+            }
+
             this.classList.add("active");
-            document.getElementById("points").innerText = `${arrayClicked.length}`
                     
             isBomb = findNumberArray(randomNumbersArray,numberClicked)
-
-                      
+            
             if (isBomb){
                 newElement.style.backgroundColor = "red"  
-                console.log("primo",isBomb);
                 gridElement.classList.add("disabled");
                 endGame.innerHTML = `Hai perso! Hai fatto ${arrayClicked.length - 1} click prima di colpire una bomba!`
+                document.getElementById("points").innerText = arrayClicked.length -1
                 for (j=0; j<randomNumbersArray.length; j++){
                     document.querySelector(`#grid div:nth-of-type(${randomNumbersArray[j]})`).classList.add("bomb")
                 }
-                document.getElementById("points").innerText = `${arrayClicked.length-1}`
-
+                
                 
             } else if (arrayClicked.length == (cellNum - 16)){
-                console.log("lungh.",arrayClicked.length)
                 gridElement.classList.add("disabled");
                 endGame.innerHTML = "Hai vinto!"
-
-
-
             }
-
         })
                 
     }            
@@ -108,7 +103,7 @@ function createGrid(cellNum,numberCol){
 
 // funzione per trovare bomba
 function findNumberArray(array, target) {
-    return array.includes(target); // Returns true if the target is found, false otherwise
+    return array.includes(target); // 
 }
 
 
